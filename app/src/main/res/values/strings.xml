@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">PixivClient</string>
+    <string name="app_name">Pixiv排行榜</string>
+    <string name="action_statement">声明</string>
     <string name="action_settings">Settings</string>
 </resources>
