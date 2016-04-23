@@ -23,10 +23,10 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 
-    private static final String[] tabTitles = new String[]{"Daily", "Weekly",
-            "Monthly", "Rookie", "Original", "Male", "Female"};
-    private static final String[] tabIds = new String[]{"Daily", "Weekly",
-            "Monthly", "Rookie", "Original", "Male", "Female"};
+    private static final String[] tabTitles = new String[]{"今日", "本周",
+            "本月", "新人", "原创", "男性人气作品", "女性人气作品"};
+    private static final String[] tabIds = new String[]{"daily", "weekly",
+            "monthly", "rookie", "original", "male", "female"};
 
     private Toolbar mToolbar;
 
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_statement) {
             Snackbar.make(mToolbar, "本APP仅为学习开发使用,所有图片抓取自http://www.pixiv.net/,版权归原作者所有", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             return true;
         }
