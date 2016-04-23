@@ -25,6 +25,9 @@ import javax.net.ssl.X509TrustManager;
 
 public class JsoupTool {
     private static JsoupTool instance = null;
+    private static final String URL = "http://www.pixiv.net";
+    private static final String MODE = "/member_illust.php?mode=big&amp;";
+    private static final String MODE2 = "/member_illust.php?mode=big";
 
     private JsoupTool() {
         trustEveryone();
@@ -74,15 +77,20 @@ public class JsoupTool {
                     .timeout(10000)
                     .post();
 
-            Elements urls = doc.select("img[src$=.jpg]");
-        //    Elements urls = doc.select("ranking-image-item");
-            Log.e("JsoupTool",urls.toString());
+            Elements urls = doc.getElementsByAttributeValue("class", "title ")
+                            .select("a[href]");
+         //   Elements urls = doc.select("img[src$=.jpg]");
+
             List<ImageInfo> imgList = new ArrayList<ImageInfo>();
             ImageInfo imageInfo;
             for (Element url : urls) {
                 imageInfo = new ImageInfo();
-                imageInfo.setImageTitle(url.attr("title"));
-                imageInfo.setImageUrl(url.attr("src"));
+
+            //    Log.e("bbbbbb",url.toString());
+//                Log.e("ccccc",url.attr("href"));
+                imageInfo.setImageTitle(url.attr("a"));
+             //   imageInfo.setImageUrl(url.attr("src"));
+                imageInfo.setImageUrl(getImageUrl(url.attr("href")));
                 imgList.add(imageInfo);
             }
 
@@ -92,4 +100,24 @@ public class JsoupTool {
             return null;
         }
     }
+
+    public String getImageUrl(String url) throws IOException {
+        Log.e("url",URL + url);
+        Document doc = Jsoup.connect(URL + url)
+                .timeout(10000)
+                .post();
+
+        String m = url.split("&uarea")[0].split("&")[1];
+//        Log.e("mmm",m);
+
+
+        String s = doc.getElementsByAttributeValueContaining("href",m).toString();
+//        Log.e("s",s);
+
+        String mode = doc.getElementsByAttributeValueContaining("onclick","mode=big")
+                .select("img[src$=.jpg]").attr("src");
+//        Log.e("result", mode);
+        return  mode;
+    }
+
 }
