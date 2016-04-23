@@ -74,12 +74,9 @@ public class JsoupTool {
                     .timeout(10000)
                     .post();
 
-            String title = doc.title();
-            System.out.println(title);
-
             Elements urls = doc.select("img[src$=.jpg]");
         //    Elements urls = doc.select("ranking-image-item");
-            Log.e("hhhhhhh",urls.toString());
+            Log.e("JsoupTool",urls.toString());
             List<ImageInfo> imgList = new ArrayList<ImageInfo>();
             ImageInfo imageInfo;
             for (Element url : urls) {

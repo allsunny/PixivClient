@@ -45,7 +45,9 @@ public class PageSectionFragment extends Fragment {
 
     private static final int REQUEST_FINISHED = 100;
     private static final String KEY_CONTENT = "PageSectionFragment:CategoryId";
-    private static final String URL = "http://www.pixiv.net/ranking.php?mode=";
+//    private static final String URL = "http://www.pixiv.net/ranking.php?mode=";
+    private static final String URL = "http://touch.pixiv.net/ranking.php?mode=";
+
 
     public static PageSectionFragment newInstance(String categoryId) {
         PageSectionFragment fragment = new PageSectionFragment();
@@ -76,7 +78,7 @@ public class PageSectionFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.e("AN", "onCreateView:" + this.hashCode());
+
         View view = inflater.inflate(R.layout.fragment_section, container, false);
 
         mPullRefreshListView = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
@@ -129,7 +131,7 @@ public class PageSectionFragment extends Fragment {
 
     public void getImageData(int pageNum) {
         if (Validator.isEffective(mCategoryId)) {
-            final String pageUrl = URL + mCategoryId + "&pager_offset=" + pageNum;
+            final String pageUrl = URL + mCategoryId + "&p=" + pageNum;
             new Thread(new Runnable() {
 
                 @Override
@@ -235,12 +237,12 @@ public class PageSectionFragment extends Fragment {
                 Glide.with(mContext).load(imgUrl).into(viewHolder.iv_img);
             }
 
-            viewHolder.iv_img.setOnClickListener(new View.OnClickListener(){
+/*            viewHolder.iv_img.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
                     Snackbar.make(view, "Image clicked, there will be a new page!", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
                 }
-            });
+            });*/
 
             return view;
         }

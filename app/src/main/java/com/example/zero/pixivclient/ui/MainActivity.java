@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
 
         final ActionBar ab = getSupportActionBar();
-        ab.setHomeAsUpIndicator(R.mipmap.ic_launcher);  //修改返回箭头 ←
+        ab.setHomeAsUpIndicator(R.drawable.indicator);  //修改返回箭头 ←
         ab.setDisplayHomeAsUpEnabled(true);      //显示图标 ←
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
