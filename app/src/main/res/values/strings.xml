@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Pixiv排行榜</string>
-    <string name="action_statement">声明</string>
     <string name="action_settings">Settings</string>
+    <string name="action_statement">特别声明</string>
+    <string name="action_about">关于作者</string>
+    <string name="change_to_r18">切换到R18版本</string>
 </resources>

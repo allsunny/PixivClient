@@ -26,8 +26,6 @@ import javax.net.ssl.X509TrustManager;
 public class JsoupTool {
     private static JsoupTool instance = null;
     private static final String URL = "http://www.pixiv.net";
-    private static final String MODE = "/member_illust.php?mode=big&amp;";
-    private static final String MODE2 = "/member_illust.php?mode=big";
 
     private JsoupTool() {
         trustEveryone();
@@ -86,10 +84,7 @@ public class JsoupTool {
             for (Element url : urls) {
                 imageInfo = new ImageInfo();
 
-            //    Log.e("bbbbbb",url.toString());
-//                Log.e("ccccc",url.attr("href"));
                 imageInfo.setImageTitle(url.attr("a"));
-             //   imageInfo.setImageUrl(url.attr("src"));
                 imageInfo.setImageUrl(getImageUrl(url.attr("href")));
                 imgList.add(imageInfo);
             }
@@ -116,7 +111,6 @@ public class JsoupTool {
 
         String mode = doc.getElementsByAttributeValueContaining("onclick","mode=big")
                 .select("img[src$=.jpg]").attr("src");
-//        Log.e("result", mode);
         return  mode;
     }
 

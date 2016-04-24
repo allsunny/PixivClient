@@ -48,6 +48,32 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
+        android:src="@android:drawable/ic_input_add" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@android:drawable/ic_dialog_email"
+        app:borderWidth="0dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="80dp"
+        app:fabSize="mini"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/change_to_r18"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="70dp"
+        android:layout_marginBottom="88dp"
+        android:textSize="16sp"
+        android:textColor="#fafafa"
+        android:background="#B2000000"
+        android:visibility="invisible"/>
 
 </android.support.design.widget.CoordinatorLayout>

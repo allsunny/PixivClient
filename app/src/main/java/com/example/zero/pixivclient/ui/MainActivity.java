@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.zero.pixivclient.R;
 
@@ -43,11 +44,21 @@ public class MainActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);      //显示图标 ←
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        final FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+        final TextView textView = (TextView)findViewById(R.id.text);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Any suggestions,  Email to: 623368886@qq.com", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                fab2.setVisibility(View.VISIBLE);
+                textView.setVisibility(View.VISIBLE);
+            }
+        });
+
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fab2.setVisibility(View.INVISIBLE);
+                textView.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -112,11 +123,19 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        switch (id) {
+            case R.id.action_statement:
+                Snackbar.make(mToolbar, "本APP仅为学习开发使用,所有图片抓取自http://www.pixiv.net/,版权归原作者所有", Snackbar.LENGTH_SHORT)
+                        .setAction("Action", null).show();
+                break;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_statement) {
-            Snackbar.make(mToolbar, "本APP仅为学习开发使用,所有图片抓取自http://www.pixiv.net/,版权归原作者所有", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-            return true;
+            case R.id.action_about:
+                Snackbar.make(mToolbar, "Any suggestions,  Email to: 623368886@qq.com", Snackbar.LENGTH_SHORT)
+                        .setAction("Action", null).show();
+                break;
+
+            default:
+                break;
         }
 
         return super.onOptionsItemSelected(item);

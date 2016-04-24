@@ -45,7 +45,6 @@ public class PageSectionFragment extends Fragment {
 
     private static final int REQUEST_FINISHED = 100;
     private static final String KEY_CONTENT = "PageSectionFragment:CategoryId";
-//    private static final String URL = "http://www.pixiv.net/ranking.php?mode=";
     private static final String URL = "http://touch.pixiv.net/ranking.php?mode=";
 
 
